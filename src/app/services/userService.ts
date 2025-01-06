@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { Token } from "../types/storeState";
 
 // const url = "http://localhost:3000";
-const url = "https://routes-sharing-full-stack-project-ofzla3rui.vercel.app";
+const url = "https://routes-sharing-full-stack-project.vercel.app";
 
 export const signupFunction = async (
   fullName: string,

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const url = "http://localhost:3000";
-const url = "https://routes-sharing-full-stack-project-ofzla3rui.vercel.app";
+const url = "https://routes-sharing-full-stack-project.vercel.app";
 
 // פונקציה להוספת קילומטרים
 export const addDistance = async (meter: number) => {

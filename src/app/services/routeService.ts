@@ -2,7 +2,7 @@ import axios from "axios";
 import PartialRoute from "../types/props/RouteAddingProps";
 
 // const url = "http://localhost:3000";
-const url = "https://routes-sharing-full-stack-project-ofzla3rui.vercel.app";
+const url = "https://routes-sharing-full-stack-project.vercel.app";
 
 export const addRoute = async (newRoute: PartialRoute) => {
   try {
