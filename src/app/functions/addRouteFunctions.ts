@@ -59,7 +59,7 @@ export const calculateRoute = (
   >,
   setDisableMapClick: React.Dispatch<React.SetStateAction<boolean>>,
   setIsAddRoute: React.Dispatch<React.SetStateAction<boolean>>,
-  setSelectedRoute: React.Dispatch<React.SetStateAction<string | null>>
+  setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   if (routePoints.length < 2) {
     Swal.fire({
@@ -117,7 +117,7 @@ export const calculateRoute = (
       setDirections(result);
       setDisableMapClick(true);
       setIsAddRoute(false);
-      setSelectedRoute("myRoutes");
+      setIsHomePage(true);
     } else {
       Swal.fire({
         icon: "error",
