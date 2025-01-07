@@ -15,7 +15,7 @@ import {
 import { getUserAddress } from "../functions/usersFunctions";
 import AddRouteProps from "../types/props/AddRouteProps";
 
-const AddRoute: React.FC<AddRouteProps> = ({ setIsAddRoute }) => {
+const AddRoute: React.FC<AddRouteProps> = ({ setIsAddRoute ,setLoading, setSelectedRoute}) => {
   const [description, setDescription] = useState("");
   const [pictures, setPictures] = useState<string[]>([]);
   const [address, setAddress] = useState(""); // לשמור את הכתובת
@@ -170,12 +170,14 @@ const AddRoute: React.FC<AddRouteProps> = ({ setIsAddRoute }) => {
               onClick={() =>
                 description.length >= 5 &&
                 calculateRoute(
+                  setLoading,
                   routePoints,
                   description,
                   pictures,
                   setDirections,
                   setDisableMapClick,
-                  setIsAddRoute
+                  setIsAddRoute,
+                  setSelectedRoute
                 )
               }
               disabled={description.length < 5}

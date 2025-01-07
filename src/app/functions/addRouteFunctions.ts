@@ -1,6 +1,6 @@
 import { addRoute } from "../services/routeService";
 import { getUserToken } from "./usersFunctions";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 export const handleMapClick = (
   event: google.maps.MapMouseEvent,
@@ -50,6 +50,7 @@ export const resetMap = (
 };
 
 export const calculateRoute = (
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   routePoints: google.maps.LatLngLiteral[],
   description: string,
   pictures: string[],
@@ -57,18 +58,19 @@ export const calculateRoute = (
     React.SetStateAction<google.maps.DirectionsResult | null>
   >,
   setDisableMapClick: React.Dispatch<React.SetStateAction<boolean>>,
-  setIsAddRoute: React.Dispatch<React.SetStateAction<boolean>>
+  setIsAddRoute: React.Dispatch<React.SetStateAction<boolean>>,
+  setSelectedRoute: React.Dispatch<React.SetStateAction<string | null>>
 ) => {
   if (routePoints.length < 2) {
     Swal.fire({
-      icon: 'warning',
-      title: 'שגיאה',
-      text: 'עליך לבחור לפחות שתי נקודות למסלול.',
-      confirmButtonText: 'הבנתי'
+      icon: "warning",
+      title: "שגיאה",
+      text: "עליך לבחור לפחות שתי נקודות למסלול.",
+      confirmButtonText: "הבנתי",
     });
     return;
   }
-
+  setLoading(true);
   const directionsService = new google.maps.DirectionsService();
   const request: google.maps.DirectionsRequest = {
     origin: routePoints[0],
@@ -105,16 +107,23 @@ export const calculateRoute = (
         description: description,
         gallery: pictures,
       });
-
+      setLoading(false);
       setDirections(result);
       setDisableMapClick(true);
       setIsAddRoute(false);
+      setSelectedRoute("myRoutes");
+      Swal.fire({
+        icon: "success",
+        title: "הצלחה",
+        text: "המסלול נוסף בהצלחה!",
+        confirmButtonText: "הבנתי",
+      });
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'שגיאה',
-        text: 'לא ניתן לחשב מסלול.',
-        confirmButtonText: 'הבנתי'
+        icon: "error",
+        title: "שגיאה",
+        text: "לא ניתן לחשב מסלול.",
+        confirmButtonText: "הבנתי",
       });
     }
   });

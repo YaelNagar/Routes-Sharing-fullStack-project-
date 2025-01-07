@@ -111,7 +111,7 @@ const Page = () => {
           ) : isAreaChoosing ? (
             <AreaRoute setIsAreaChoosing={setIsAreaChoosing} setLoading={setLoading}/>
           ) : isAddRoute ? (
-            <AddRoute setIsAddRoute={setIsAddRoute} />
+            <AddRoute setIsAddRoute={setIsAddRoute} setLoading={setLoading} setSelectedRoute={setSelectedRoute}/>
           ) : isEditUser ? (
             <EditUser setIsEditUser={setIsEditUser} />
           ) : (
