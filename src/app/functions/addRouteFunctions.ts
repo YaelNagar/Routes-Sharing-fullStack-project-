@@ -107,17 +107,17 @@ export const calculateRoute = (
         description: description,
         gallery: pictures,
       });
-      setLoading(false);
-      setDirections(result);
-      setDisableMapClick(true);
-      setIsAddRoute(false);
-      setSelectedRoute("myRoutes");
       Swal.fire({
         icon: "success",
         title: "הצלחה",
         text: "המסלול נוסף בהצלחה!",
         confirmButtonText: "הבנתי",
       });
+      setLoading(false);
+      setDirections(result);
+      setDisableMapClick(true);
+      setIsAddRoute(false);
+      setSelectedRoute("myRoutes");
     } else {
       Swal.fire({
         icon: "error",
